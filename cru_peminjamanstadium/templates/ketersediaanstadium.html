@@ -1,6 +1,7 @@
 <!doctype html>
+{% include 'manager_templates.html' %}
 <html lang="en">
-
+{% block content %}
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   </head>
@@ -17,7 +18,7 @@
     }
     </style>
 <div class="container">
-    <h2>List Waktu Stadium</h2>
+    <h2>List Pemesanan</h2>
     <form>
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -43,4 +44,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </body>
+  {% endblock %}
   </html>

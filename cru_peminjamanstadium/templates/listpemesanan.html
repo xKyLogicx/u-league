@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+{% include 'manager_templates.html' %}
 <html>
+{% block content %}
 <head>
   <title>Peminjaman Stadium</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -12,12 +14,11 @@
         .container {
       text-align: center;
       background-color: rgba(255, 255, 255, 0.2);
-      padding: 20px;
       border-radius: 10px;
     }
     </style>
   <div class="container">
-    <h2>List Pemesanan</h2>
+    <h2>Peminjaman Stadium</h2>
     <form>
       <div class="form-group">
         <label for="stadiumSelect">Stadium:</label>
@@ -40,4 +41,5 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+{% endblock %}
 </html>
