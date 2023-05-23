@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <title>U-LEAGUE</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet"/>
+        <link rel="shortcut icon" href="images/favicon.ico">
       
       <style>
           li{
@@ -64,9 +65,9 @@
             <a class="font-weight-bold" style="color: white; padding-left: 10px;">TEST - MANAGER</a>
 
               <ul class="menu menu-horizontal p-0" style="size: 10px; float: right;">
-                <li><a href="">Dashboard</a></li>
+                <li><a href="{% url 'manager:manager_home' %}">Dashboard</a></li>
                 <li tabindex="0">
-                  <a>
+                  <a href="{% url 'manager:mengelola_tim' %}">
                     Mengelola Tim
                   </a>
                 </li>

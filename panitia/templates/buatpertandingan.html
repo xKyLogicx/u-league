@@ -1,0 +1,154 @@
+{% include 'panitia_templates.html' %}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <style>
+      p {
+          text-align: center;
+      }
+      
+      label{
+          font-size: 12px;
+          font-weight: bold;
+          color: black;
+      }
+
+      .lowbutton {
+        font-size: 17px; 
+        border-radius: 18px; 
+        width:18rem;
+      }
+
+      .a{
+            font-size: 30px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+        }
+
+        .lowbutton {
+        font-size: 17px; 
+        border-radius: 18px; 
+        width:18rem;
+      }
+
+      
+  </style>
+</head>
+
+<body>
+    <h2 class="a"> Buat Pertandingan </h1>
+
+    <div class="p-5 mt-2 mb-2 text-dark">
+        <form method="POST" id="buatPertandinganForm">
+            {% csrf_token %}
+            <table>
+                <tr">
+                    <div class="form-floating mb-3">
+                        <label for="addWasitUtama"> Pilih Wasit Utama </label>
+                        <select class="form-select form-control" name="pemain" id="addWasitUtama"
+                            aria-label="Default select example"
+                            style="padding-top: 1rem; padding-bottom: 0rem;font-size:13px; height: 3.5rem; line-height: 1.5;">
+                            <option disabled selected>--- Wasit yang tersedia ---</option>
+                            <option value="Wasit AAA"> Wasit AAA </option>
+                            <option value="Wasit BBB"> Wasit BBB </option>
+                            <option value="Wasit BBB"> Wasit CCC </option>
+                            <option value="..."> ... </option>
+                        </select>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-floating mb-3">
+                        <label for="addWasitPembantu1"> Pilih Wasit Pembantu/Hakim Garis </label>
+                        <select class="form-select form-control" name="pemain" id="addWasitPembantu1"
+                            aria-label="Default select example"
+                            style="padding-top: 1rem; padding-bottom: 0rem;font-size:13px; height: 3.5rem; line-height: 1.5;">
+                            <option disabled selected>--- Wasit yang tersedia ---</option>
+                            <option value="Wasit AAA"> Wasit AAA </option>
+                            <option value="Wasit BBB"> Wasit BBB </option>
+                            <option value="Wasit BBB"> Wasit CCC </option>
+                            <option value="..."> ... </option>
+                        </select>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-floating mb-3">
+                        <label for="addWasitPembantu2"> Pilih Wasit Pembantu/Hakim Garis </label>
+                        <select class="form-select form-control" name="pemain" id="addWasitPembantu2"
+                            aria-label="Default select example"
+                            style="padding-top: 1rem; padding-bottom: 0rem;font-size:13px; height: 3.5rem; line-height: 1.5;">
+                            <option disabled selected>--- Wasit yang tersedia ---</option>
+                            <option value="Wasit AAA"> Wasit AAA </option>
+                            <option value="Wasit BBB"> Wasit BBB </option>
+                            <option value="Wasit BBB"> Wasit CCC </option>
+                            <option value="..."> ... </option>
+                        </select>
+                    </div>
+                </tr>
+                <tr>
+                    <div class="form-floating mb-3">
+                        <label for="addWasitCadangan"> Pilih Wasit Cadangan </label>
+                        <select class="form-select form-control" name="pemain" id="addWasitCadangan"
+                            aria-label="Default select example"
+                            style="padding-top: 1rem; padding-bottom: 0rem;font-size:13px; height: 3.5rem; line-height: 1.5;">
+                            <option disabled selected>--- Wasit yang tersedia ---</option>
+                            <option value="Wasit AAA"> Wasit AAA </option>
+                            <option value="Wasit BBB"> Wasit BBB </option>
+                            <option value="Wasit BBB"> Wasit CCC </option>
+                            <option value="..."> ... </option>
+                        </select>
+                    </div>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="title-input mt-0 mb-1 mx-2 fw-bold" 
+                        style="font-size: 15px; font-weight: bold; text-align:left"> Tim 1:  </p>
+                    </td>
+                    <td>
+                        <div class="form-floating">
+                            <select class="form-select form-control" name="pemain" id="addTim1"
+                                aria-label="Default select example"
+                                style="padding-top: 1rem; padding-bottom: 0rem;font-size:13px; height: 3.5rem; line-height: 1.5; width: 30rem">
+                                <option disabled selected>--- Tim yang sudah mendaftar di stadium ---</option>
+                                <option value="Tim QWERTY" > Tim QWERTY </option>
+                                <option value="Tim TYUIOP" > Tim TYUIOP </option>
+                                <option value="..." > ... </option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <p class="title-input mt-0 mb-1 ml-5 mx-2 fw-bold" 
+                        style="font-size: 15px; font-weight: bold; text-align:left"> Tim 2:  </p>
+                    </td>
+                    <td>
+                        <div class="form-floating">
+                            <select class="form-select form-control" name="pemain" id="addTim2"
+                                aria-label="Default select example"
+                                style="padding-top: 1rem; padding-bottom: 0rem;font-size:13px; height: 3.5rem; line-height: 1.5; width: 30rem">
+                                <option disabled selected>--- Tim yang sudah mendaftar di stadium ---</option>
+                                <option value="Tim QWERTY" > Tim QWERTY </option>
+                                <option value="Tim TYUIOP" > Tim TYUIOP </option>
+                                <option value="..." > ... </option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <p style="text-align: center">
+        <a href="{% url 'panitia:show_homelist' %}"
+            class="btn btn-dark m-3 lowbutton" 
+            role="button"  style="color:white"> Submit</a>
+    </p>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

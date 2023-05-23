@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% extends "panitia_templates.html" %}
+<html>
+    {% block content %}
+  <head>
+    <title>Pilih Pertandingan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="p-3 mt-3 ml-2 mb-0 text-dark" style="text-align: center">
+        <h3 class="fw"> Pilih Pertandingan </h3>
+    </div> 
+    
+    <div class="px-5 mt-0 mb-2 mx-5 text-dark" style="font-size: 15px">
+    <table class="table table-striped table-bordered" >
+      <thead class="thead-dark text-light" style="background: #051c2c">
+        <tr>
+          <th>Tim Bertanding</th>
+          <th>Stadium</th>
+          <th>Tanggal dan Waktu</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tim A vs Tim B</td>
+          <td>Stadium ABC</td>
+          <td>12 Mei 2023, 07.00 - 09.00</td>
+          <td><a class="btn text-light p-1" role="button" 
+            style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
+            Mulai Rapat</a></td>
+        </tr>
+        <tr>
+          <td>Tim C vs Tim D</td>
+          <td>Stadium XYZ</td>
+          <td>15 Mei 2023, 13.00 - 15.00</td>
+          <td><a class="btn text-light p-1" role="button" 
+            style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
+            Mulai Rapat</a></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+  {% endblock %}
+</html>

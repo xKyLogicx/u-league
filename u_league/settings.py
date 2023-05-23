@@ -12,9 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+PRODUCTION = os.environ.get("DATABASE_URL") != None
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,7 +28,9 @@ SECRET_KEY = 'django-insecure-d!t6oimpv3h3)5$t%j=mbh(*hwehlwdb1y!7@o7b^$&=wfc=0e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost', '127.0.0.1', 'u-league-proj.up.railway.app',
+]
 
 
 # Application definition
@@ -42,6 +46,8 @@ INSTALLED_APPS = [
     'manage_tim',
     'manage_pertandingan',
     'crud_pertandingan',
+    'mulai_rapat',
+    'pembelian_tiket',
     'cru_peminjamanstadium',
     'r_listpertandingan',
     'historyrapat',
@@ -90,7 +96,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -126,7 +131,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

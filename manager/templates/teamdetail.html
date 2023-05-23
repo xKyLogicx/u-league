@@ -1,0 +1,178 @@
+{% include 'manager_templates.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+        p {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 12px;
+            font-weight: bold;
+            color: black;
+        }
+        
+        label{
+            font-size: 12px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .card{
+            border-radius: 10px;
+            height: auto;
+            width: auto;
+        }
+        
+        .a{
+            font-size: 30px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+        }
+
+        .b{
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+        }
+
+        .action {
+          font-size: 14px; 
+          border-radius: 15px; 
+          width:8rem;
+        }
+
+        .lowbutton {
+          font-size: 17px; 
+          border-radius: 18px; 
+          width:18rem;
+        }
+
+        
+    </style>
+
+</head>
+<body>
+    <h1 class="a" >Tim</h1>
+    <div class="container" style="padding: 10px;">
+      <div class="p-3 mt-3 ml-2 mb-0 text-dark" style="text-align: center">
+        <h4 class="b"> Pemain </h4>
+      </div> 
+
+    <div class="p-2 mt-0 mb-2 text-light" style="font-size: 13px">
+        <table class="table table-striped table-bordered" >
+            <thead class="thead-dark" style="background: #051c2c">
+              <tr>
+                <th scope="col">Nama Pemain</th>
+                <th scope="col">No HP</th>
+                <th scope="col">Tanggal Lahir</th>
+                <th scope="col">Is Captain</th>
+                <th scope="col">Posisi</th>
+                <th scope="col">NPM</th>
+                <th scope="col">Jenjang</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody class="text-light">
+              {% for pemain in pemain_list %}
+              <tr>
+                <td>{{pemain.nama_pemain}}</td>
+                <td>{{pemain.nomor_hp}}</td>
+                <td>{{pemain.tgl_lahir}}</td>
+                {% if pemain.is_captain == True %}
+                  <td> ✅ </td>
+                {% elif pemain.is_captain == False %}  
+                  <td> ❌ </td>
+                {% endif %}
+                <td>{{pemain.posisi}}</td>
+                <td>{{pemain.npm}}</td>
+                <td>{{pemain.jenjang}}</td>
+                 
+                <td>
+                  {% if pemain.is_captain == False %} 
+                  <form METHOD="POST" action="{% url 'manager:make_captain' %}"> 
+                    {% csrf_token %}
+                    <p style="text-align: center; margin-bottom: 3px;">
+
+                        <input class="hidden"  
+                          value="{{pemain.id_pemain}}" type="text" name="capt"></input>
+
+                        <button type="submit"  class="action hover:underline" 
+                        style="background: #1f40cb"> Make Captain </button>
+                        <!-- <a class="btn text-light m-0 action" role="button" 
+                          href="{% url 'manager:make_captain' %}"
+                          style="background: #1f40cb">
+                          Make Captain </a> -->
+                    </p>
+                  </form>
+                  {% endif %}
+                  <form METHOD="POST" action="{% url 'manager:delete_pemain' %}"> 
+                    {% csrf_token %}
+                    <input class="hidden"  
+                        value='{{pemain.id_pemain}}' type="text" name="player"></input>
+                        <button type="submit"  class="action hover:underline" 
+                        style="background: #DC3545"> Delete </button>
+                  <!-- <p style="text-align: center">
+                      <a class="btn btn-danger text-light m-0 action" role="button">
+                        Delete</a> -->
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+
+    <div class="p-3 mt-3 ml-2 mb-0 text-dark" style="text-align: center">
+      <h4 class="b"> Pelatih </h4>
+    </div> 
+
+    <div class="p-2 mt-0 mb-2 text-dark" style="font-size: 13px">
+        <table class="table table-striped table-bordered" >
+            <thead class="thead-dark text-light" style="background: #051c2c">
+              <tr>
+                <th scope="col">Nama Pelatih</th>
+                <th scope="col">No HP</th>
+                <th scope="col">Email</th>
+                <th scope="col">Alamat</th>
+                <th scope="col">Spesialisasi</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody class="text-light">
+              {% for pelatih in pelatih_list %}
+              <tr>
+                <td>{{pelatih.nama_pelatih}}</td>
+                <td>{{pelatih.nomor_hp}}</td>
+                <td>{{pelatih.email}}</td>
+                <td>{{pelatih.alamat}}</td>
+                <td>{{pelatih.jenis_spesialisasi}}</td>
+                <td>
+                  <form METHOD="POST" action="{% url 'manager:delete_pelatih' %}"> 
+                    {% csrf_token %}
+                  <input class="hidden"  
+                      value='{{pelatih.id_pelatih}}' type="text" name="coach"></input>
+                      <button type="submit"  class="action hover:underline" 
+                      style="background: #DC3545"> Delete </button> 
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    
+    <p style="text-align: center" class="mb-5">
+      <a href="{% url 'manager:show_addpemain' %}"
+        class="btn btn-dark m-4 lowbutton" 
+        style="color: white" role="button">Tambahkan Pemain</a>
+      <a href="{% url 'manager:show_addpelatih' %}"
+        class="btn btn-dark m-4 lowbutton" role="button" 
+        style="color: white">Tambahkan Pelatih</a>
+    </p>
+    </div>
+
+    {% endblock %}

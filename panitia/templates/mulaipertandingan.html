@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% extends "panitia_templates.html" %}
+
+<html>
+    {% block content %}
+  <head>
+    <title>Mulai Pertandingan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="px-5 mt-0 mb-2 mx-5 text-dark" style="font-size: 15px">
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark text-light" style="background: #051c2c">
+        <div class="p-3 mt-3 ml-2 mb-0 text-dark" style="text-align: center">
+            <h3 class="fw"> Pilih Peristiwa Tim AC Milan </h3>
+        </div> 
+        <tr>
+          <th>Tim 1</th>
+          <th>Tim 2</th>
+          <th>Peristiwa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Chelsea</td>
+          <td>Barcelona</td>
+          <td><a href="{% url 'panitia:pilih_peristiwa' %}" class="btn text-light p-1" role="button" 
+            style="font-size: 14px; border-radius: 14px; width:15rem; background: #1f40cb">
+            Masukkan Peristiwa Tim 1</a>
+          <br>
+          <a href="{% url 'panitia:pilih_peristiwa' %}" class="btn text-light p-1" role="button" 
+            style="font-size: 14px; border-radius: 14px; width:15rem; background: #1f40cb">
+            Masukkan Peristiwa Tim 2</a></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    </div>
+    <p style="text-align: center">
+        <a class="btn btn-dark m-3" role="button" 
+          style="font-size: 17px; border-radius: 20px; width:12rem; color:white">Submit</a>
+      </p>
+    
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"></script>
+  </body>
+  {% endblock %}
+</html>
