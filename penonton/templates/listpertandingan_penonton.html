@@ -32,17 +32,17 @@
           </tr>
         </thead>
         <tbody>
+            <!-- <select name="nama_atlet">
+              <option value="'atlet">atelet</option>
+              <option value="atlet 2">atlet 2</option>
+            </select> -->
+          {% for tanding in listpertandingan %}
           <tr>
-            <td>A vs B</td>
-            <td>Stadium GBK</td>
-            <td>5 Juli 2023, 07.00 - 09.00</td>
+            <td>{{tanding.nama_tim_a}} vs {{tanding.nama_tim_b}}</td>
+            <td>{{tanding.stadium}}</td>
+            <td>{{tanding.start_datetime}}</td>
           </tr>
-          <tr>
-            <td>C vs D</td>
-            <td>Stadium GBK</td>
-            <td>7 Juli 2023, 13.00 - 15.00</td>
-          </tr>
-          <!-- Add more rows as needed -->
+          {% endfor %}
         </tbody>
       </table>
     </div>

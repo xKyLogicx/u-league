@@ -13,56 +13,60 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 def show_historyrapat(request):
-    return render(request, "historyrapat.html")
+    query_historyrapat = query(f"""
+    SELECT
+    r.*,
+    s.Nama AS Stadium_Name,
+    tp1.Nama_Tim AS Nama_Tim_A,
+    tp2.Nama_Tim AS Nama_Tim_B
+    FROM Rapat AS r
+    LEFT JOIN Pertandingan AS p ON r.ID_Pertandingan = p.ID_Pertandingan
+    LEFT JOIN Stadium AS s ON p.Stadium = s.ID_Stadium
+    LEFT JOIN Tim_Pertandingan AS tp1 ON p.ID_Pertandingan = tp1.ID_Pertandingan
+    LEFT JOIN Tim_Pertandingan AS tp2 ON p.ID_Pertandingan = tp2.ID_Pertandingan
+    AND tp1.Nama_Tim < tp2.Nama_Tim
+    LEFT JOIN Tim AS t1 ON tp1.Nama_Tim = t1.Nama_Tim
+    LEFT JOIN Tim AS t2 ON tp2.Nama_Tim = t2.Nama_Tim
+    ORDER BY p.Start_Datetime ASC;
+""")
+                               
+    # history rapat lumayan rumit queriesnya
+    # harusnya ambil nama panitia bukan ID
+    print(query_historyrapat)
+
+    context={
+        'history_rapat':query_historyrapat
+    }
+    
+    return render(request, "historyrapat.html", context=context)
+    
 
 def manager_home(request):
     return render(request, 'manager_home.html')
 
 def show_listpertandingan(request):
-    queryaduh = query(f"""
-    SELECT * FROM PERTANDINGAN;
+    query_listpertandinganmanager = query(f"""
+    SELECT
+        tp1.Nama_Tim AS Nama_Tim_A,
+        tp2.Nama_Tim AS Nama_Tim_B,
+        s.Nama AS Stadium,
+        p.Start_Datetime
+    FROM Pertandingan AS p
+    LEFT JOIN Stadium AS s ON p.Stadium = s.ID_Stadium
+    LEFT JOIN Tim_Pertandingan AS tp1 ON p.ID_Pertandingan = tp1.ID_Pertandingan
+    LEFT JOIN Tim_Pertandingan AS tp2 ON p.ID_Pertandingan = tp2.ID_Pertandingan
+    LEFT JOIN Tim_Manajer AS tm1 ON tp1.Nama_Tim = tm1.Nama_Tim
+    LEFT JOIN Tim_Manajer AS tm2 ON tp2.Nama_Tim = tm2.Nama_Tim
+    ORDER BY p.Start_Datetime ASC;
     """)
 
-    print(queryaduh)
-#    query_listpertandingan = query(f"""
-#    SELECT . FROM Tim_bertanding, Stadium, Pertandingan
-#    """) bikin query dulu
+    print(query_listpertandinganmanager)
 
-#    INTINYA DAPETIN YANG GUA MAU
+    context={
+        'listpertandingan_manager':query_listpertandinganmanager
+    }
 
-#    print(team_name)
-
-    # context = {
-    #     '': query_listpertandingan
-    # }
-
-    return render(request, "listpertandingan.html")
-
-# @csrf_exempt
-# def query_datapertandingan(request):
-#     team_name = query(f"""
-#         SELECT Nama_Tim FROM Tim_Manajer
-#         WHERE ID_Manajer = (
-#             SELECT ID_Manajer FROM Manajer
-#             WHERE Username = '{username}'
-#         )
-#     """)
-
-#     print(team_name)
-
-#     pertandingan_list = query(f"""
-#         SELECT P.Nama_Tim as tim_bertanding, P.Stadion, P.Tanggal, P.Waktu
-#         FROM Pertandingan P
-#         INNER JOIN Tim T ON P.Tim_A = T.Nama_Tim OR P.Tim_B = T.Nama_Tim
-#         INNER JOIN Tim_Manajer TM ON T.Nama_Tim = TM.Nama_Tim
-#         WHERE TM.ID_Manajer = (
-#             SELECT ID_Manajer FROM Manajer
-#             WHERE Username = '{username}'
-#         )
-#     """)
-
-#     print(pertandingan_list)
-
+    return render(request, "listpertandingan.html", context=context)
 
 @csrf_exempt
 def mengelola_tim(request):
