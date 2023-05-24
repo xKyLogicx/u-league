@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'pembelian_tiket',
     'cru_peminjamanstadium',
     'r_listpertandingan',
-    'historyrapat',
     'manager',
     'penonton',
     'panitia',

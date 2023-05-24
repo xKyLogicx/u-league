@@ -12,8 +12,14 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+def show_historyrapat(request):
+    return render(request, "historyrapat.html")
+
 def manager_home(request):
     return render(request, 'manager_home.html')
+
+def show_listpertandingan(request):
+    return render(request, "listpertandingan.html")
 
 @csrf_exempt
 def mengelola_tim(request):

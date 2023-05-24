@@ -16,4 +16,7 @@ urlpatterns = [
         path('delete_pelatih/', views.delete_pelatih, name='delete_pelatih'),
         path('add_coach/', views.add_coach, name='add_coach'),
         path('add_player/', views.add_player, name='add_player'),
+        path('historyrapat/', views.show_historyrapat, name='history_rapat'),
+        path('listpertandingan/', views.show_listpertandingan, name='listpertandingan'),
 ]
+
