@@ -19,7 +19,50 @@ def manager_home(request):
     return render(request, 'manager_home.html')
 
 def show_listpertandingan(request):
+    queryaduh = query(f"""
+    SELECT * FROM PERTANDINGAN;
+    """)
+
+    print(queryaduh)
+#    query_listpertandingan = query(f"""
+#    SELECT . FROM Tim_bertanding, Stadium, Pertandingan
+#    """) bikin query dulu
+
+#    INTINYA DAPETIN YANG GUA MAU
+
+#    print(team_name)
+
+    # context = {
+    #     '': query_listpertandingan
+    # }
+
     return render(request, "listpertandingan.html")
+
+# @csrf_exempt
+# def query_datapertandingan(request):
+#     team_name = query(f"""
+#         SELECT Nama_Tim FROM Tim_Manajer
+#         WHERE ID_Manajer = (
+#             SELECT ID_Manajer FROM Manajer
+#             WHERE Username = '{username}'
+#         )
+#     """)
+
+#     print(team_name)
+
+#     pertandingan_list = query(f"""
+#         SELECT P.Nama_Tim as tim_bertanding, P.Stadion, P.Tanggal, P.Waktu
+#         FROM Pertandingan P
+#         INNER JOIN Tim T ON P.Tim_A = T.Nama_Tim OR P.Tim_B = T.Nama_Tim
+#         INNER JOIN Tim_Manajer TM ON T.Nama_Tim = TM.Nama_Tim
+#         WHERE TM.ID_Manajer = (
+#             SELECT ID_Manajer FROM Manajer
+#             WHERE Username = '{username}'
+#         )
+#     """)
+
+#     print(pertandingan_list)
+
 
 @csrf_exempt
 def mengelola_tim(request):

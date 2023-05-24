@@ -4,7 +4,6 @@ from psycopg2 import Error
 from psycopg2.extras import RealDictCursor
 
 try:
-
     connection = psycopg2.connect(user="postgres",
                         password='yVsNQM0m3odfm4wJkuS9',
                         host="containers-us-west-49.railway.app",
@@ -17,7 +16,6 @@ try:
 
 except (Exception, Error) as error:
     print("Error while connecting to PostgreSQL", error)
-
 
 def map_cursor(cursor):
     "Return all rows from a cursor as a namedtuple"
