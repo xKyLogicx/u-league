@@ -1,7 +1,7 @@
-<!doctype html>
-<html lang="en">
+{% include 'panitia_templates.html'%}
+{% load static %}
 
-<head>
+{% block content %}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   <style>
@@ -10,7 +10,7 @@
 
 <body>
     <div class="p-5 mb-1 text-light" style="background: #051c2c">
-        <h1 class="fw"> Kelola Pertandingan </h1>
+        <h2 class="fw"> Kelola Pertandingan </h>
     </div> 
 
     <div class="p-3 mt-5 ml-0 mb-0 text-dark" style="text-align: center">
@@ -31,4 +31,4 @@
     crossorigin="anonymous"></script>
 </body>
 
-</html>
+{% endblock %}

@@ -1,132 +1,185 @@
 {% extends 'base_templates.html' %}
 {% load static %}
 {% block content %}
-    <style>
-        
-        @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-        .login-page {
-            width: 360px;
-            padding: 8% 0 0;
-            margin: auto;
-        }
-        .form {
-            position: center;
-            z-index: 1;
-            background: #FFFFFF;
-            max-width: 360px;
-            margin: 0 auto 100px;
-            padding: 45px;
-            text-align: center;
-            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-        }
-        .form input {
-            font-family: "Roboto Bold", sans-serif;
-            outline: 0;
-            background: #f2f2f2;
-            width: 100%;
-            border: 0;
-            margin: 0 0 15px;
-            padding: 15px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
-        .form button {
-            font-family: "Roboto Bold", sans-serif;
-            text-transform: uppercase;
-            outline: 0;
-            background: black;
-            width: 100%;
-            border: 0;
-            padding: 10px;
-            color: white;
-            font-size: 14px;
-            -webkit-transition: all 0.3 ease;
-            transition: all 0.3 ease;
-            cursor: pointer;
-        }
-        .form button:hover,.form button:active,.form button:focus {
-         background: #1f40cb;
-        }
-        .form .message {
-            margin: 15px 0 0;
-            color: #b3b3b3;
-            font-size: 12px;
-        }
-        .form .message a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-        .form .register-form {
-            display: none;
-        }
-        
-        body {
-            background: white;
-            font-family: "Roboto Bold", sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;      
-        }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script>
-        $( function() {
-          $( "#datepicker" ).datepicker();
-        } );
-    </script>
+    .login-page {
+        width: 360px;
+        padding: 8% 0 0;
+        margin: auto;
+    }
+
+    .form {
+        position: center;
+        z-index: 1;
+        background: #FFFFFF;
+        max-width: 360px;
+        margin: 0 auto 100px;
+        padding: 45px;
+        text-align: center;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    }
+
+    .form input {
+        font-family: "Roboto Bold", sans-serif;
+        outline: 0;
+        background: #f2f2f2;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+
+    .form button {
+        font-family: "Roboto Bold", sans-serif;
+        text-transform: uppercase;
+        outline: 0;
+        background: black;
+        width: 100%;
+        border: 0;
+        padding: 10px;
+        color: white;
+        font-size: 14px;
+        -webkit-transition: all 0.3 ease;
+        transition: all 0.3 ease;
+        cursor: pointer;
+    }
+
+    .form button:hover,
+    .form button:active,
+    .form button:focus {
+        background: #1f40cb;
+    }
+
+    .form .message {
+        margin: 15px 0 0;
+        color: #b3b3b3;
+        font-size: 12px;
+    }
+
+    .form .message a {
+        color: #4CAF50;
+        text-decoration: none;
+    }
+
+    .form .register-form {
+        display: none;
+    }
+
+    body {
+        background: white;
+        font-family: "Roboto Bold", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 </head>
+
 <body>
+    <div class="container" style="width: 75%; margin-left: 15rem;">
+        {% for message in messages %}
+      <div class="alert alert-danger alert-dismissible fade show w-75" role="alert" 
+      style="margin-top: 0.5rem">
+        {{ message }}
+        <a type="button" class="close" data-dismiss="alert"
+        style="color: darkred" role="button">&times;</a>
+      </div>
+    {% endfor %}
+    </div>
     <div class="container" style="width: 100%; padding: 30px;">
         <form method="POST">
-            <div class="form" id="ManagerSection">
+            {% csrf_token %}
+            <div class="form">
                 <h4 class="mt-1 mb-5 pb-1 font-weight-bold">Register Manager</h4>
+
                 <div class="form-outline mb-4">
-                    <input id="ManagerFNameInput" name="ManagerFNameInput" type="text" 
-                    placeholder="Nama Depan" class="form-control" /> 
+                    <input id="ManagerUsernameInput" name="ManagerUsernameInput" type="text" placeholder="Username"
+                        class="form-control" />
                 </div>
                 <div class="form-outline mb-4">
-                    <input id="ManagerLNameInput" name="ManagerLNameInput" type="text"
-                    placeholder="Nama Belakang" class="form-control" /> 
+                    <input id="ManagerPasswordInput" name="ManagerPasswordInput" type="password" placeholder="Password"
+                        class="form-control" />
                 </div>
                 <div class="form-outline mb-4">
-                    <input id="ManagerNoHPInput" name="ManagerNoHPInput" type="tel" 
-                    placeholder="No HP" class="form-control" /> 
+                    <input id="ManagerFNameInput" name="ManagerFNameInput" type="text" placeholder="Nama Depan"
+                        class="form-control" />
                 </div>
                 <div class="form-outline mb-4">
-                    <input id="ManagerAlamatInput" name="ManagerAlamatInput" type="text"
-                    placeholder="Alamat" class="form-control" /> 
+                    <input id="ManagerLNameInput" name="ManagerLNameInput" type="text" placeholder="Nama Belakang"
+                        class="form-control" />
                 </div>
                 <div class="form-outline mb-4">
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option selected>Pilih Status</option>
-                        <option value="1">Mahasiswa</option>
-                        <option value="2">Dosen</option>
-                        <option value="3">Tendik</option>
-                        <option value="4">Alumni</option>
-                        <option value="5">Umum</option>
-                    </select>
-                </div>
-    
-                <div class="form-outline mb-4">
-                    <input id="ManagerUsernameInput" name="ManagerNamaRestoInput" type="text" 
-                    placeholder="Nama Manager" class="form-control" /> 
+                    <input id="ManagerNoHPInput" name="ManagerNoHPInput" type="text" placeholder="No HP"
+                        class="form-control" />
                 </div>
                 <div class="form-outline mb-4">
-                    <input id="ManagerPasswordInput" name="ManagerPasswordInput" type="password" 
-                    placeholder="Password" class="form-control" /> 
+                    <input id="ManagerEmailInput" name="ManagerEmailInput" type="text" placeholder="Email"
+                        class="form-control" />
                 </div>
-                {% if lolos %}
-                <p class="text-danger"> Harap isi semua form! </p> 
-                {% endif %}
-                <div class="text-center pt-1 mb-5 pb-1">
-                    <button class="btn btn-dark btn-block fa-lg gradient-custom-2 mb-3"
-                    id="ManagerButton" type="submit" value="Register" > DAFTAR</button>
+                <div class="form-outline mb-4">
+                    <input id="ManagerAlamatInput" name="ManagerAlamatInput" type="text" placeholder="Alamat"
+                        class="form-control" />
+                </div>
+                <div class="form-outline mb-4" style="font-size: 13px;">
+                    <table style="font-size: 13px;">
+                        <p>Pilih Status</p>
+                        <tr>
+                            <td>
+                                <input type="radio" id="is_mhs" name="is_mhs" value="Mahasiswa">
+                            </td>
+                            <td>
+                                <label class="radio-button" for="is_mhs">Mahasiswa</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" id="is_dosen" name="is_dosen" value="Dosen">
+                            </td>
+                            <td>
+                                <label class="radio-button" for="is_dosen">Dosen</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" id="is_tendik" name="is_tendik" value="Tendik" class="radioBtn">
+                            </td>
+                            <td>
+                                <label class="radio-button" for="is_tendik">Tendik</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" id="is_alumni" name="is_alumni" value="Alumni" class="radioBtn">
+                            </td>
+                            <td>
+                                <label class="radio-button" for="is_alumni">Alumni</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" id="is_umum" name="is_umum" value="Umum" class="radioBtn">
+                            </td>
+                            <td>
+                                <label class="radio-button" for="is_umum">Umum</label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="text-center pt-1 mb-2 pb-1">
+                    <button class="btn btn-dark btn-block fa-lg gradient-custom-2 mb-3" id="ManagerButton" type="submit"
+                        value="Register"> DAFTAR</button>
+                </div>
+                <div class="text-center pt-1 mb-3 pb-1">
+                    <p class="message">Sudah punya akun?<a href="/login/" style="color: steelblue"> Login</a></p>
                 </div>
             </div>
-        
         </form>
-      </div>
+    </div>
 
-{% endblock %}
+    {% endblock %}

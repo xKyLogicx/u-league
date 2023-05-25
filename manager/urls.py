@@ -16,7 +16,15 @@ urlpatterns = [
         path('delete_pelatih/', views.delete_pelatih, name='delete_pelatih'),
         path('add_coach/', views.add_coach, name='add_coach'),
         path('add_player/', views.add_player, name='add_player'),
+<<<<<<< HEAD
         path('historyrapat/', views.show_historyrapat, name='history_rapat'),
         path('listpertandingan/', views.show_listpertandingan, name='listpertandingan'),
 ]
 
+=======
+        path('listpemesanan/', show_listpemesanan, name='show_listpemesanan'),
+        path('ketersediaanstadium/', show_ketersediaanstadium, name='show_ketersediaanstadium'),
+        path('stadium/', show_memesanstadium, name='show_memesanstadium'),
+
+]
+>>>>>>> 4149ff142004cd018e53f5a5860593ea209f6a7b

@@ -78,10 +78,27 @@
 
 </head>
 <body>
+    <div class="container" style="width: 75%; margin-left: 15rem;">
+        {% for message in messages %}
+        <div class="alert alert-danger alert-dismissible fade show w-75" role="alert" style="margin-top: 0.5rem">
+            {{ message }}
+            <a type="button" class="close" data-dismiss="alert" style="color: darkred" role="button">&times;</a>
+        </div>
+        {% endfor %}
+    </div>
     <div class="container" style="width: 100%; padding: 30px;">
         <form method="POST">
+            {% csrf_token %}
             <div class="form" id="PenontonSection">
                 <h4 class="mt-1 mb-5 pb-1 font-weight-bold">Register Penonton</h4>
+                <div class="form-outline mb-4">
+                    <input id="PenontonUsernameInput" name="PenontonUsernameInput" type="text" placeholder="Username"
+                        class="form-control" />
+                </div>
+                <div class="form-outline mb-4">
+                    <input id="PenontonPasswordInput" name="PenontonPasswordInput" type="password" placeholder="Password"
+                        class="form-control" />
+                </div>
                 <div class="form-outline mb-4">
                     <input id="PenontonFNameInput" name="PenontonFNameInput" type="text" 
                     placeholder="Nama Depan" class="form-control" /> 
@@ -91,38 +108,68 @@
                     placeholder="Nama Belakang" class="form-control" /> 
                 </div>
                 <div class="form-outline mb-4">
-                    <input id="PenontonNoHPInput" name="PenontonNoHPInput" type="tel" 
+                    <input id="PenontonNoHPInput" name="PenontonNoHPInput" type="text" 
                     placeholder="No HP" class="form-control" /> 
+                </div>
+                <div class="form-outline mb-4">
+                    <input id="PenontonEmailInput" name="PenontonEmailInput" type="text" placeholder="Email"
+                        class="form-control" />
                 </div>
                 <div class="form-outline mb-4">
                     <input id="PenontonAlamatInput" name="PenontonAlamatInput" type="text"
                     placeholder="Alamat" class="form-control" /> 
                 </div>
                 <div class="form-outline mb-4">
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option selected>Pilih Status</option>
-                        <option value="1">Mahasiswa</option>
-                        <option value="2">Dosen</option>
-                        <option value="3">Tendik</option>
-                        <option value="4">Alumni</option>
-                        <option value="5">Umum</option>
-                    </select>
+                    <table style="font-size: 13px;">
+                        <p>Pilih Status</p>
+                        <tr>
+                            <td>
+                                <input type="radio" id="is_mhs" name="is_mhs" value="Mahasiswa">
+                            </td>
+                            <td>
+                                <label class="radio-button" for="is_mhs">Mahasiswa</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" id="is_dosen" name="is_dosen" value="Dosen">
+                            </td>
+                            <td>
+                                <label class="radio-button" for="is_dosen">Dosen</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" id="is_tendik" name="is_tendik" value="Tendik">
+                            </td>
+                            <td>
+                                <label class="radio-button" for="is_tendik">Tendik</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" id="is_alumni" name="is_alumni" value="Alumni">
+                            </td>
+                            <td>
+                                <label class="radio-button" for="is_alumni">Alumni</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="radio" id="is_umum" name="is_umum" value="Umum">
+                            </td>
+                            <td>
+                                <label class="radio-button" for="is_umum">Umum</label>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-    
-                <div class="form-outline mb-4">
-                    <input id="PenontonUsernameInput" name="PenontonNamaRestoInput" type="text" 
-                    placeholder="Username" class="form-control" /> 
-                </div>
-                <div class="form-outline mb-4">
-                    <input id="PenontonPasswordInput" name="PenontonPasswordInput" type="password" 
-                    placeholder="Password" class="form-control" /> 
-                </div>
-                {% if lolos %}
-                <p class="text-danger"> Harap isi semua form! </p> 
-                {% endif %}
-                <div class="text-center pt-1 mb-5 pb-1">
+                <div class="text-center pt-1 mb-2 pb-1">
                     <button class="btn btn-dark btn-block fa-lg gradient-custom-2 mb-3"
                     id="PenontonButton" type="submit" value="Register" > DAFTAR</button>
+                </div>
+                <div class="text-center pt-1 mb-3 pb-1">
+                    <p class="message">Sudah punya akun?<a href="/login/" style="color: steelblue"> Login</a></p>
                 </div>
             </div>
         

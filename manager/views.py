@@ -7,11 +7,13 @@ from utils.query import *
 from django.views.decorators.csrf import csrf_exempt
 
 locale.setlocale(locale.LC_ALL, '')
+from django.views.decorators.csrf import csrf_exempt
 
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+<<<<<<< HEAD
 def show_historyrapat(request):
     query_historyrapat = query(f"""
     SELECT
@@ -41,8 +43,33 @@ def show_historyrapat(request):
     return render(request, "historyrapat.html", context=context)
     
 
+=======
+@csrf_exempt
+>>>>>>> 4149ff142004cd018e53f5a5860593ea209f6a7b
 def manager_home(request):
-    return render(request, 'manager_home.html')
+    context = {}
+    username = request.session['username']
+    # manajer = query(f"""
+    #             SELECT np.nama_depan, np.nama_belakang, np.nomor_hp, np.email, np.alamat, nps.status, tm.nama_tim
+    #             FROM manajer m, non_pemain np, status_non_pemain nps, tim_manajer tm
+    #             WHERE m.id_manajer = np.id AND np.id = nps.id_non_pemain AND m.id_manajer = tm.id_manajer AND m.username = '{username}'""")
+    
+    manajer = query(f"""
+                SELECT np.nama_depan, np.nama_belakang, np.nomor_hp, np.email, np.alamat, string_agg(DISTINCT nps.status, ', ') as status, tm.nama_tim, t.universitas, COUNT(DISTINCT p.id_pemain) AS jumlah_pemain, COUNT(DISTINCT pl.id_pelatih) AS jumlah_pelatih
+                FROM manajer m
+                JOIN non_pemain np ON m.id_manajer = np.id
+                LEFT JOIN status_non_pemain nps ON np.id = nps.id_non_pemain
+                LEFT JOIN tim_manajer tm ON m.id_manajer = tm.id_manajer
+                LEFT JOIN tim t ON tm.nama_tim = t.nama_tim
+                LEFT JOIN pemain p ON t.nama_tim = p.nama_tim
+                LEFT JOIN pelatih pl ON t.nama_tim = pl.nama_tim
+                WHERE m.username = '{username}'
+                GROUP BY 1, 2, 3, 4, 5, 7, 8""")
+
+    context = {
+        'data_manajer' : manajer
+    }
+    return render(request, "manager_home.html", context=context)
 
 def show_listpertandingan(request):
     query_listpertandinganmanager = query(f"""
@@ -70,7 +97,7 @@ def show_listpertandingan(request):
 
 @csrf_exempt
 def mengelola_tim(request):
-    username = "amartusewicz2"
+    username = request.session['username']
 
     team = query(f"""
     SELECT * FROM Manajer
@@ -91,7 +118,19 @@ def mengelola_tim(request):
 
 @csrf_exempt
 def show_timregist(request):
-    username = "amartusewicz2"
+    username = request.session['username']
+
+    team = query(f"""
+    SELECT * FROM Manajer
+    NATURAL LEFT JOIN Tim_Manajer
+    WHERE Username = '{username}'
+    """)
+
+    if team[0]['nama_tim'] is not None:
+        print("MASUK SINI JUGA PLS")
+        print(team[0]['nama_tim'])
+        return HttpResponseRedirect(reverse('manager:show_teamdetail'))
+
     if request.method == 'POST':
         team_name = request.POST.get("team_name")
         uni_name = request.POST.get("uni_name")
@@ -123,9 +162,10 @@ def show_timregist(request):
 def show_teamdetail(request):
     context = {}
 
-    username = "amartusewicz2"
+    username = request.session['username']
 
     nama_tim = get_team(username)
+
 
     query_get_pemain = query(f"""
     SELECT Pm.ID_Pemain, CONCAT(Pm.Nama_Depan, ' ', Pm.Nama_Belakang) as Nama_Pemain, Nomor_HP, Tgl_Lahir, Is_Captain, Posisi, NPM, Jenjang 
@@ -145,7 +185,8 @@ def show_teamdetail(request):
     print("halo")
     context = {
         'pemain_list' : query_get_pemain,
-        'pelatih_list' : query_get_pelatih
+        'pelatih_list' : query_get_pelatih,
+        'nama_tim' : nama_tim
     }
 
     return render(request, "teamdetail.html", context=context)
@@ -190,7 +231,7 @@ def show_addpelatih(request):
 @csrf_exempt
 def add_player(request):
     context = {}
-    username = "amartusewicz2"
+    username = request.session['username']
     nama_tim = get_team(username)
 
     if request.method == 'POST':
@@ -205,7 +246,7 @@ def add_player(request):
 @csrf_exempt
 def add_coach(request):
     context = {}
-    username = "amartusewicz2"
+    username = request.session['username']
     nama_tim = get_team(username)
 
     if request.method == 'POST':
@@ -228,7 +269,7 @@ def add_coach(request):
 def make_captain(request):
     context = {}
 
-    username = "amartusewicz2"
+    username = request.session['username']
     nama_tim = get_team(username)
 
     if request.method == 'POST':
@@ -302,3 +343,47 @@ def extract_string_before_word(string, word):
     else:
         # If the word is not found in the string
         return string
+
+# untuk CRU peminjaman Stadium
+def show_listpemesanan(request):
+    if request.method == 'GET':
+
+            pemesanan = query("""SELECT nama, start_datetime || ' - ' || end_datetime as waktu FROM stadium s, peminjaman p, manajer m where s.id_stadium = p.id_stadium AND m.id_manajer = p.id_manajer ORDER BY start_datetime asc;""")
+                
+            print(pemesanan)
+            context = {'pemesanan': pemesanan}
+
+            return render(request, 'listpemesan.html', context)
+
+def show_ketersediaanstadium(request):
+    context = {}
+    
+    stadium = query("""
+        SELECT id_stadium, nama
+        FROM stadium 
+        ;
+        """)
+
+    context = {
+        'stadium' : stadium
+        }
+    return render(request, "ketersediaanstadium.html", context)
+
+# def add_pesanstadium(request):
+#     context = {}
+#     # username = "amartusewicz2"
+#     # nama_tim = get_team(username)
+
+#     if request.method == 'POST':
+#         id_stadium = request.POST.get("stadium")    
+#         testtt = query(f"UPDATE PEMAIN SET Nama_Tim = '{nama_tim}' WHERE ID_Pemain = '{id_player}'")
+
+#         print(id_stadium)
+#         print(testtt)
+
+#     return HttpResponseRedirect(reverse('manager:show_ketersediaan'))
+
+def show_memesanstadium(request):
+    return render(request, "memesanstadium.html")
+
+

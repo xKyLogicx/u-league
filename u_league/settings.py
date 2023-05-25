@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication',
     'manage_tim',
-    'manage_pertandingan',
     'crud_pertandingan',
     'mulai_rapat',
     'cru_peminjamanstadium',

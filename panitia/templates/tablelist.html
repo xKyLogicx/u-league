@@ -1,225 +1,221 @@
-<!doctype html>
-<html lang="en">
+{% include 'panitia_templates.html'%}
+{% load static %}
 
+{% block content %}
 <head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <style>
-  </style>
+    <style>
+        li{
+          color: white;
+        }
+        a{
+          text-decoration:none;
+        }
+        a:hover{
+          color: white;
+          text-decoration:none;
+          background-color: #1f40cb;
+          font-weight: bold;
+
+        }
+        li:active {
+            text-decoration: none;
+            color: #FFFFFF;
+        }
+
+        ul{
+            background-color: black;
+        }
+
+        .btn{
+        border-radius: 10px;
+        }
+
+        .nav {
+            width: 100%;
+            height: auto;
+            line-height: 65px;
+            text-align: center;
+            z-index: 99999999 !important;
+            position: relative;
+        }
+        .navbar{
+            margin-bottom: 70px !important;
+        }
+
+
+
+        </style>
 </head>
 
 <body>
-    <div class="p-5 mb-1 text-light" style="background: #051c2c">
-        <h1 class="fw"> Kelola Pertandingan </h1>
+    <div class="p-5 mb-1 text-light w-full" style="background: #051c2c">
+        <p class="fw text-light text-4xl text-center"> Kelola Pertandingan </p>
     </div> 
 
     <div class="p-3 mt-3 ml-2 mb-0 text-dark" style="text-align: center">
         <h4 class="fw"> List Pertandingan Grup Stage </h3>
     </div> 
 
-    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide overflow-visible" data-bs-ride="carousel">
+        <div class="carousel-indicators translate-y-8 z-20">
             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="px-5 mt-0 carousel-inner">
-            <div class="carousel-item active" data-bs-interval="10000">
-                <table class="table table-bordered">
-                    <thead class="thead-dark text-light" style="background: #051c2c">
-                        <tr>
-                        <th scope="col">Grup</th>
-                        <th scope="col">Tim</th>
-                        <th scope="col">Waktu</th>
-                        <th scope="col">Pemenang</th>
-                        <th scope="col" style="width:10rem">Action</th>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td rowspan="4">A</td>
-                        <td>A VS B</td>
-                        <td>28 April 2023, 13:00</td>
-                        <td>A</td>
-                        <td>
-                            <p style="text-align: center">
-                                <a class="btn text-light p-1" role="button" 
-                                  style="font-size: 14px; border-radius: 14px; width:7rem; background: #1f40cb">
-                                  Lihat Peristiwa Tim 1</a>
-                            </p>
-                            <p style="text-align: center">
-                                <a class="btn text-light p-1" role="button" 
-                                  style="font-size: 14px; border-radius: 14px; width:7rem; background: #00a2ed">
-                                  Lihat Peristiwa Tim 2</a>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>C VS D</td>
-                        <td>29 April 2023, 13:00</td>
-                        <td>D</td>
-                        <td>
-                            <p style="text-align: center">
-                                <a class="btn text-light p-1" role="button" 
-                                  style="font-size: 14px; border-radius: 14px; width:7rem; background: #1f40cb">
-                                  Lihat Peristiwa Tim 1</a>
-                            </p>
-                            <p style="text-align: center">
-                                <a class="btn text-light p-1" role="button" 
-                                  style="font-size: 14px; border-radius: 14px; width:7rem; background: #00a2ed">
-                                  Lihat Peristiwa Tim 2</a>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>E VS F</td>
-                        <td>[Waktu Dimulai -5 menit]</td>
-                        <td>-</td>
-                        <td>
-                            <p style="text-align: center">
-                                <a class="btn text-light p-1" role="button" 
-                                  style="font-size: 14px; border-radius: 14px; width:7rem; background: #051c2c">
-                                  Mulai</a>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>G VS H</td>
-                        <td>10 May 2023, 12:00</td>
-                        <td>-</td>
-                        <td>
-                            <p style="text-align: center">
-                                Belum waktunya
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2">…</td>
-                        <td>…</td>
-                        <td>…</td>
-                        <td>…</td>
-                        <td>…</td>
-                    </tr>
-                    <tr>
-                        <td>…</td>
-                        <td>…</td>
-                        <td>…</td>
-                        <td>…</td>
-                    </tr>
-                </table>    
-            </div>
-            <div class="carousel-item" data-bs-interval="2000">
-                <table class="table table-bordered text-dark">
-                    <thead class="thead-dark text-light" style="background: #051c2c">
-                        <tr>
-                        <th scope="col">Grup</th>
-                        <th scope="col">Tim</th>
-                        <th scope="col">Waktu</th>
-                        <th scope="col">Pemenang</th>
-                        <th scope="col" style="width:10rem">Action</th>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td rowspan="2">A</td>
-                        <td>A VS D</td>
-                        <td>28 Mei 2023, 13:00</td>
-                        <td>-</td>
-                        <td>
-                            <p style="text-align: center">
-                                <a class="btn text-light p-1" role="button" 
-                                  style="font-size: 14px; border-radius: 14px; width:7rem; background: #1f40cb">
-                                  Update</a>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>E VS H</td>
-                        <td>29 April 2023, 13:00</td>
-                        <td>-</td>
-                        <td>
-                            <p style="text-align: center">
-                                <a class="btn text-light p-1" role="button" 
-                                  style="font-size: 14px; border-radius: 14px; width:7rem; background: #1f40cb">
-                                  Update</a>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2">…</td>
-                        <td>…</td>
-                        <td>…</td>
-                        <td>…</td>
-                        <td>…</td>
-                    </tr>
-                    <tr>
-                        <td>…</td>
-                        <td>…</td>
-                        <td>…</td>
-                        <td>…</td>
-                    </tr>
-                </table> 
-            </div>
-            <div class="carousel-item">
-                <table class="table table-bordered">
-                    <thead class="thead-dark text-light" style="background: #051c2c">
-                        <tr>
-                        <th scope="col">Tim</th>
-                        <th scope="col">Waktu</th>
-                        <th scope="col">Pemenang</th>
-                        <th scope="col" style="width:10rem">Action</th>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td>A VS I</td>
-                        <td>28 July 2023, 13:00</td>
-                        <td>A</td>
-                        <td>
-                            <p style="text-align: center">
-                                <a class="btn text-light p-1" role="button" 
-                                  style="font-size: 14px; border-radius: 14px; width:7rem; background: #1f40cb">
-                                  Lihat Peristiwa Tim 1</a>
-                            </p>
-                            <p style="text-align: center">
-                                <a class="btn text-light p-1" role="button" 
-                                  style="font-size: 14px; border-radius: 14px; width:7rem; background: #00a2ed">
-                                  Lihat Peristiwa Tim 2</a>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>? vs ?</td>
-                        <td>[Waktu Dimulai -5 Menit] </td>
-                        <td>-</td>
-                        <td>
-                            <p style="text-align: center">
-                                <a class="btn text-light p-1" role="button" 
-                                  style="font-size: 14px; border-radius: 14px; width:7rem; background: #051c2c">
-                                  Mulai</a>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>? VS ?</td>
-                        <td>10 July 2023, 12:00</td>
-                        <td>-</td>
-                        <td>
-                            <p style="text-align: center">
-                                Belum waktunya
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>…</td>
-                        <td>…</td>
-                        <td>…</td>
-                        <td>…</td>
-                    </tr>
-                </table> 
-            </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
+        <div class="flex flex-row w-full px-10">
+            <div class="mt-0 carousel-inner px-40">
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark text-light" style="background: #051c2c">
+                            <tr>
+                            <th scope="col">Grup</th>
+                            <th scope="col">Tim</th>
+                            <th scope="col">Waktu</th>
+                            <th scope="col">Pemenang</th>
+                            <th scope="col" style="width:10rem">Action</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            {% for tim_1 in tim1 %}
+                            {% for tim_2 in tim2 %}
+                            {% for time in waktu%}
+                            {% for win in pemenang %}
+                            <td rowspan="4">A</td>
+                            <td>{{tim_1.nama_tim}} VS {{tim_2.nama_tim}}</td>
+                            <td>{{time.start_datetime}}</td>
+                            <td>{{win.pemenang}}</td>
+                            <td>
+                                <p style="text-align: center">
+                                    <a class="btn text-light p-1" role="button"
+                                      style="font-size: 14px; border-radius: 14px; background: #1f40cb">
+                                      Lihat Peristiwa Tim 1</a>
+                                </p>
+                                <p style="text-align: center">
+                                    <a class="btn text-light p-1" role="button"
+                                      style="font-size: 14px; border-radius: 14px; background: #00a2ed">
+                                      Lihat Peristiwa Tim 2</a>
+                                </p>
+                            </td>
+                        </tr> 
+                        {% endfor %} {% endfor %} {% endfor %} {% endfor %}
+                    </table>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <table class="table table-bordered text-dark">
+                        <thead class="thead-dark text-light" style="background: #051c2c">
+                            <tr>
+                            <th scope="col">Grup</th>
+                            <th scope="col">Tim</th>
+                            <th scope="col">Waktu</th>
+                            <th scope="col">Pemenang</th>
+                            <th scope="col" style="width:10rem">Action</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td rowspan="2">A</td>
+                            <td>A VS D</td>
+                            <td>28 Mei 2023, 13:00</td>
+                            <td>-</td>
+                            <td>
+                                <p style="text-align: center">
+                                    <a class="btn text-light p-1" role="button"
+                                      style="font-size: 14px; border-radius: 14px; background: #1f40cb">
+                                      Update</a>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>E VS H</td>
+                            <td>29 April 2023, 13:00</td>
+                            <td>-</td>
+                            <td>
+                                <p style="text-align: center">
+                                    <a class="btn text-light p-1" role="button"
+                                      style="font-size: 14px; border-radius: 14px; background: #1f40cb">
+                                      Update</a>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">…</td>
+                            <td>…</td>
+                            <td>…</td>
+                            <td>…</td>
+                            <td>…</td>
+                        </tr>
+                        <tr>
+                            <td>…</td>
+                            <td>…</td>
+                            <td>…</td>
+                            <td>…</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="carousel-item">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark text-light" style="background: #051c2c">
+                            <tr>
+                            <th scope="col">Tim</th>
+                            <th scope="col">Waktu</th>
+                            <th scope="col">Pemenang</th>
+                            <th scope="col" style="width:10rem">Action</th>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <td>A VS I</td>
+                            <td>28 July 2023, 13:00</td>
+                            <td>A</td>
+                            <td>
+                                <p style="text-align: center">
+                                    <a class="btn text-light p-1" role="button"
+                                      style="font-size: 14px; border-radius: 14px; background: #1f40cb">
+                                      Lihat Peristiwa Tim 1</a>
+                                </p>
+                                <p style="text-align: center">
+                                    <a class="btn text-light p-1" role="button"
+                                      style="font-size: 14px; border-radius: 14px; background: #00a2ed">
+                                      Lihat Peristiwa Tim 2</a>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>? vs ?</td>
+                            <td>[Waktu Dimulai -5 Menit] </td>
+                            <td>-</td>
+                            <td>
+                                <p style="text-align: center">
+                                    <a class="btn text-light p-1" role="button"
+                                      style="font-size: 14px; border-radius: 14px; background: #051c2c">
+                                      Mulai</a>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>? VS ?</td>
+                            <td>10 July 2023, 12:00</td>
+                            <td>-</td>
+                            <td>
+                                <p style="text-align: center">
+                                    Belum waktunya
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>…</td>
+                            <td>…</td>
+                            <td>…</td>
+                            <td>…</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
@@ -227,7 +223,7 @@
     </div>
     
     <p style="text-align: center">
-      <a class="btn btn-dark m-4" role="button" 
+      <a class="btn btn-dark m-4 text-white" role="button" 
         style="font-size: 17px; border-radius: 20px; width:15rem">Finish</a>
     </p>
 
@@ -236,4 +232,4 @@
     crossorigin="anonymous"></script>
 </body>
 
-</html>
+{% endblock %}

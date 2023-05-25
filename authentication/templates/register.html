@@ -6,6 +6,7 @@
     <style>
         @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
+
         .login-page {
             width: 360px;
             padding: 8% 0 0;
@@ -115,6 +116,7 @@
                 <h4 class="mt-1 mb-5 pb-1 font-weight-bold">Jenis Akun</h4>
             </div>
             <form method="POST">
+                {% csrf_token %}
             
                 <div class="form-outline mb-4">
                     <select class="form-select btn btn-dark btn-block fa-lg mb-3" aria-label="Default select example" id="jenisAkunSelect" name="role1" style = "padding: 10px;">
@@ -130,7 +132,7 @@
                         <button class="btn btn-sm" id="jenisAkunButton" 
                         type="button" onclick="chooseRole()">Pilih</button>
                     </a>
-                    <p class="message">Sudah punya akun?<a href="/login/"> Login</a></p>
+                    <p class="message" style="color:black">Sudah punya akun?<a href="/login/"> Login</a></p>
                 </div>
 
                 </form>

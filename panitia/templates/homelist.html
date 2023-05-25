@@ -1,205 +1,232 @@
-<!doctype html>
-<html lang="en">
+{% include 'panitia_templates.html' %}
+{% load static %}
 
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+
+{% block content %}
     <style>
+        p {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 12px;
+            font-weight: bold;
+            color: black;
+        }
+        
+        label{
+            font-size: 12px;
+            font-weight: bold;
+            color: black;
+        }
+
+        .card{
+            border-radius: 10px;
+            height: auto;
+            width: auto;
+        }
+        
+        .a{
+            font-size: 30px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+        }
+
+        .b{
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+        }
+
+        .action {
+          font-size: 14px; 
+          border-radius: 15px; 
+          width:8rem;
+        }
+
+        .lowbutton {
+          font-size: 17px; 
+          border-radius: 18px; 
+          width:18rem;
+        }
+        
     </style>
 </head>
 
 <body>
-    <div class="p-5 mb-1 text-light" style="background: #051c2c">
-        <h1 class="fw"> Pembuatan Pertandingan </h1>
+    <h1 class="a" style="margin-bottom: 3rem;"> List Stadium </h1>
+    <div class="row mx-auto" style="width: 95%">
+        <div class="col">
+            <table class="table table-striped table-bordered" style="color:white" >
+                <thead class="thead-dark" style="background: #051c2c">
+                    <tr>
+                        <th scope="col">Grup A</th>
+                        <th scope="col" style="width:18rem">Action</th>
+                    </tr>
+                </thead>
+                <tr >
+                    <td >A VS B</td>
+                    <td>
+                        <p style="text-align: center">
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
+                                Update</a>
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #00a2ed">
+                                Delete</a>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>C VS D</td>
+                    <td>
+                        <p style="text-align: center">
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
+                                Update</a>
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #00a2ed">
+                                Delete</a>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>E VS F</td>
+                    <td>
+                        <p style="text-align: center">
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
+                                Update</a>
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #00a2ed">
+                                Delete</a>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>G VS H</td>
+                    <td>
+                        <p style="text-align: center">
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
+                                Update</a>
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #00a2ed">
+                                Delete</a>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col">
+            <table class="table table-striped table-bordered" style="color:white" >
+                <thead class="thead-dark text-light" style="background: #051c2c">
+                    <tr>
+                        <th scope="col">Grup B</th>
+                        <th scope="col" style="width:18rem">Action</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>M VS N</td>
+                    <td>
+                        <p style="text-align: center">
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
+                                Update</a>
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #00a2ed">
+                                Delete</a>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>K VS L</td>
+                    <td>
+                        <p style="text-align: center">
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
+                                Update</a>
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #00a2ed">
+                                Delete</a>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>M VS N</td>
+                    <td>
+                        <p style="text-align: center">
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
+                                Update</a>
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #00a2ed">
+                                Delete</a>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>? VS ?</td>
+                    <td>
+                        <p style="text-align: center">
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #051c2c">
+                                Add</a>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row mx-auto" style="width: 95%">
+        <div class="col">
+            <table class="table table-striped table-bordered" style="color:white" >
+                <thead class="thead-dark text-light" style="background: #051c2c">
+                    <tr>
+                        <th scope="col">Grup C</th>
+                        <th scope="col" style="width:18rem">Action</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>? VS ?</td>
+                    <td>
+                        <p style="text-align: center">
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #051c2c">
+                                Add</a>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col">
+            <table class="table table-striped table-bordered" style="color:white" >
+                <thead class="thead-dark text-light" style="background: #051c2c">
+                    <tr>
+                        <th scope="col">Grup D</th>
+                        <th scope="col" style="width:18rem">Action</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>? VS ?</td>
+                    <td>
+                        <p style="text-align: center">
+                            <a class="btn text-light p-1" role="button"
+                                style="font-size: 14px; border-radius: 14px; width:8rem; background: #051c2c">
+                                Add</a>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
-    <div class="p-3 mt-3 ml-2 mb-0 text-dark" style="text-align: center">
-        <h4 class="fw"> List Pertandingan </h3>
-    </div>
-
-    <div class="row row-cols-md-2 mx-auto" style="width: 95%">
-        <div class="col mb-4">
-            <div class="card shadow rounded h-100">
-                <div class="card-body">
-                    <table class="table table-bordered">
-                        <thead class="thead-dark text-light" style="background: #051c2c">
-                            <tr>
-                                <th scope="col">Grup A</th>
-                                <th scope="col" style="width:18rem">Action</th>
-                            </tr>
-                        </thead>
-                        <tr>
-                            <td>A VS B</td>
-                            <td>
-                                <p style="text-align: center">
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
-                                        Update</a>
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #00a2ed">
-                                        Delete</a>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>C VS D</td>
-                            <td>
-                                <p style="text-align: center">
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
-                                        Update</a>
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #00a2ed">
-                                        Delete</a>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>E VS F</td>
-                            <td>
-                                <p style="text-align: center">
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
-                                        Update</a>
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #00a2ed">
-                                        Delete</a>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>G VS H</td>
-                            <td>
-                                <p style="text-align: center">
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
-                                        Update</a>
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #00a2ed">
-                                        Delete</a>
-                                </p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card shadow rounded h-100">
-                <div class="card-body">
-                    <table class="table table-bordered">
-                        <thead class="thead-dark text-light" style="background: #051c2c">
-                            <tr>
-                                <th scope="col">Grup B</th>
-                                <th scope="col" style="width:18rem">Action</th>
-                            </tr>
-                        </thead>
-                        <tr>
-                            <td>M VS N</td>
-                            <td>
-                                <p style="text-align: center">
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
-                                        Update</a>
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #00a2ed">
-                                        Delete</a>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>K VS L</td>
-                            <td>
-                                <p style="text-align: center">
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
-                                        Update</a>
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #00a2ed">
-                                        Delete</a>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>M VS N</td>
-                            <td>
-                                <p style="text-align: center">
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
-                                        Update</a>
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #00a2ed">
-                                        Delete</a>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>? VS ?</td>
-                            <td>
-                                <p style="text-align: center">
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #051c2c">
-                                        Add</a>
-                                </p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card shadow rounded h-100">
-                <div class="card-body">
-                    <table class="table table-bordered">
-                        <thead class="thead-dark text-light" style="background: #051c2c">
-                            <tr>
-                                <th scope="col">Grup C</th>
-                                <th scope="col" style="width:18rem">Action</th>
-                            </tr>
-                        </thead>
-                        <tr>
-                            <td>? VS ?</td>
-                            <td>
-                                <p style="text-align: center">
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #051c2c">
-                                        Add</a>
-                                </p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <div class="col mb-4">
-            <div class="card shadow rounded h-100">
-                <div class="card-body">
-                    <table class="table table-bordered">
-                        <thead class="thead-dark text-light" style="background: #051c2c">
-                            <tr>
-                                <th scope="col">Grup D</th>
-                                <th scope="col" style="width:18rem">Action</th>
-                            </tr>
-                        </thead>
-                        <tr>
-                            <td>? VS ?</td>
-                            <td>
-                                <p style="text-align: center">
-                                    <a class="btn text-light p-1" role="button"
-                                        style="font-size: 14px; border-radius: 14px; width:8rem; background: #051c2c">
-                                        Add</a>
-                                </p>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
 </body>
 
-</html>
+{% endblock %}

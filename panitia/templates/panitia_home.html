@@ -44,59 +44,61 @@
             <div class="card-body">
               <form autocomplete="off" class="form" role="form">
                 {% csrf_token %}
+                {% for panit in data_panitia %}
                 <div class="row" style="padding-top: 20px;">
                 <div class="col-md-6" style="padding-left: 100px;">
                   <div class="form-group row">
                     <label class="col-lg-4 col-form-label form-control-label">Nama Depan            :</label>
                     <div class="col-lg-7">
-                      <h8>Test</h8>
+                      <h8>{{panit.nama_depan}}</h8>
                     </div>
                   </div>
                   <div class="form-group row">
                       <label class="col-lg-4 col-form-label form-control-label">Nama Belakang       :</label>
                       <div class="col-lg-7">
-                        <h8>Villain</h8>
+                        <h8>{{panit.nama_belakang}}</h8>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-lg-4 col-form-label form-control-label">Nomor HP            :</label>
                       <div class="col-lg-7">
-                        <h8>02615555545</h8>
+                        <h8>{{panit.nomor_hp}}</h8>
                       </div>
                       </div>
                 
                     <div class="form-group row">
                         <label class="col-lg-4 col-form-label form-control-label">Email             :</label>
                         <div class="col-lg-7">
-                          <h8>Test@gmail.com</h8>
+                          <h8>{{panit.email}}</h8>
                         </div>
                     </div>
                     
                     <div class="form-group row">
                         <label class="col-lg-4 col-form-label form-control-label">Alamat            :</label>
                         <div class="col-lg-7">
-                          <h8>Gold Coast Avenue No. 12</h8>
+                          <h8>{{panit.alamat}}</h8>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-lg-4 col-form-label form-control-label">Status            :</label>
                         <div class="col-lg-7">
-                          <h8>Mahasiswa</h8>
+                          <h8>{{panit.status}}</h8>
                         </div>
                         </div>
                     <div class="form-group row">
                       <label class="col-lg-4 col-form-label form-control-label">Jabatan             :</label>
                       <div class="col-lg-7">
-                        <h8>Ketua Panitia</h8>
+                        <h8>{{panit.jabatan}}</h8>
                       </div>
                     </div>
 
                 <div class="form-group row">
                   <label class="col-lg-5 col-form-label form-control-label">Rapat Yang Akan Datang  :</label>
                   <div class="col-lg-8">
-                    <h8>Belum ada rapat</h8>
+                    <h8>{{panit.datetime}}</h8>
                   </div>
-                </div>       
+                </div>
+              {% endfor %}       
               </form>
             </div>
         </div>

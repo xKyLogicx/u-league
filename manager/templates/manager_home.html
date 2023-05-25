@@ -44,56 +44,57 @@
             <div class="card-body">
               <form autocomplete="off" class="form" role="form">
                 {% csrf_token %}
+                {% for manajer in data_manajer %}
                 <div class="row" style="padding-top: 20px;">
                 <div class="col-md-6" style="padding-left: 100px;">
                   <div class="form-group row">
                     <label class="col-lg-4 col-form-label form-control-label">Nama Depan            :</label>
                     <div class="col-lg-7">
-                      <h8>Test</h8>
+                      <h8>{{manajer.nama_depan}}</h8>
                     </div>
                   </div>
                   <div class="form-group row">
                       <label class="col-lg-4 col-form-label form-control-label">Nama Belakang       :</label>
                       <div class="col-lg-7">
-                        <h8>Villain</h8>
+                        <h8>{{manajer.nama_belakang}}</h8>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label class="col-lg-4 col-form-label form-control-label">Nomor HP            :</label>
                       <div class="col-lg-7">
-                        <h8>02615555545</h8>
+                        <h8>{{manajer.nomor_hp}}</h8>
                       </div>
                       </div>
                 
                     <div class="form-group row">
                         <label class="col-lg-4 col-form-label form-control-label">Email             :</label>
                         <div class="col-lg-7">
-                          <h8>Test@gmail.com</h8>
+                          <h8>{{manajer.email}}</h8>
                         </div>
                     </div>
                     
                     <div class="form-group row">
                         <label class="col-lg-4 col-form-label form-control-label">Alamat            :</label>
                         <div class="col-lg-7">
-                          <h8>Gold Coast Avenue No. 12</h8>
+                          <h8>{{manajer.alamat}}</h8>
                         </div>
                       </div>
                       <div class="form-group row">
                         <label class="col-lg-4 col-form-label form-control-label">Status            :</label>
                         <div class="col-lg-7">
-                          <h8>Mahasiswa</h8>
+                          <h8>{{manajer.status}}</h8>
                         </div>
                       </div>
 
                 <div class="form-group row">
                   <label class="col-lg-5 col-form-label form-control-label">Detail Tim  :</label>
                   <div class="col-lg-8">
-                    <h8>Belum Membuat Tim</h8>
+                    <h8>{{manajer.nama_tim}} dari {{manajer.universitas}}. Total Pemain sebanyak {{manajer.jumlah_pemain}} orang. Total Pelatih sebanyak {{manajer.jumlah_pelatih}} orang</h8>
                   </div>
-                </div>       
+                </div>
+              {% endfor %}      
               </form>
             </div>
         </div>
     </div>
-
     {% endblock %}

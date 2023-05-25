@@ -1,25 +1,48 @@
-<!doctype html>
-<html lang="en">
+{% include 'panitia_templates.html' %}
+{% load static %}
 
+{% block content %}
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <style>
+    <style>
+      p {
+          text-align: center;
+      }
+      
+      label{
+          font-size: 12px;
+          font-weight: bold;
+          color: black;
+      }
+
+      .lowbutton {
+        font-size: 17px; 
+        border-radius: 18px; 
+        width:18rem;
+      }
+
+      .a{
+            font-size: 30px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+        }
+
+        .lowbutton {
+        font-size: 17px; 
+        border-radius: 18px; 
+        width:18rem;
+      }
+
+      
   </style>
 </head>
 
 <body>
-    <div class="p-5 mb-1 text-light" style="background: #051c2c">
-        <h1 class="fw"> Kelola Pertandingan </h1>
-    </div> 
-
-    <div class="p-3 mt-3 ml-2 mb-0 text-dark" style="text-align: center">
-        <h4 class="fw"> List Waktu Stadium </h3>
-    </div> 
+  <h1 class="a" style="margin-bottom: 3rem;"> List Waktu Stadium </h1>
 
     <div class="d-flex justify-content-center">
        <div class="px-5 mt-0 mb-2 mx-auto text-dark text-center" style="font-size: 15px">
-        <table class="table table-striped table-bordered" style="text-align: center; width: 32rem">
+        <table class="table table-striped table-bordered" style="text-align: center; width: 32rem; color:white">
             <thead class="thead-dark text-light" style="background: #051c2c">
               <tr>
                 <th scope="col" >List Waktu</th>
@@ -32,7 +55,7 @@
                 <td>Dipesan</td>
               </tr>
               <tr>
-                <td>07.00-09.00</td>
+                <td>07.00 - 09.00</td>
                 <td>
                     <a class="btn text-light p-1" role="button"
                         style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
@@ -51,4 +74,4 @@
     crossorigin="anonymous"></script>
 </body>
 
-</html>
+{% endblock %}

@@ -17,23 +17,20 @@
         li{
           color: white;
         }
-        a{
+        a:hover{
           color: white;
           text-decoration:none;
-        }
+          background-color: #1f40cb;
+          font-weight: bold;
 
-        li:hover {
-            text-decoration: none;
-            color: #1f40cb;
         }
-
         li:active {
             text-decoration: none;
             color: #FFFFFF;
         }
 
         ul{
-            background-color: black;
+          background-color: black;
         }
 
         .btn{
@@ -59,7 +56,7 @@
     <body>
         <nav class="navbar" style="background-color:black">
 
-            <a class="font-weight-bold" style="color: white; padding-left: 15px;">TEST - PENONTON</a>
+            <p class="font-weight-bold" style="color: white; padding-left: 15px;">TEST - PENONTON</p>
 
               <ul class="menu menu-horizontal p-0" style="size: 10px; float: right;">
                 <li><a href="">Dashboard</a></li>
@@ -72,6 +69,7 @@
                     List Pertandingan
                   </a>
               </li>
+            </ul>
             <a href="{% url 'authentication:logout' %}" class="btn btn-sm font-weight-bold" style="background-color: #1f40cb; color: white;" >Logout</a>      
           </nav>
   

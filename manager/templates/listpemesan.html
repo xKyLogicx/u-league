@@ -1,0 +1,73 @@
+{% include 'manager_templates.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Peminjaman Stadium</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    p {
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 12px;
+        font-weight: bold;
+        color: black;
+    }
+    
+    label{
+        font-size: 12px;
+        font-weight: bold;
+        color: black;
+    }
+
+    .card{
+        border-radius: 10px;
+        height: auto;
+        width: auto;
+    }
+    
+    .a{
+        font-size: 30px;
+        font-weight: bold;
+        color: black;
+        text-align: center;
+    }
+
+    
+</style>
+</head>
+<body>
+    <div class="p-3 mt-3 ml-2 mb-0 text-dark" style="text-align: center">
+        <h3 class="fw"> List Pemesanan </h3>
+    </div> 
+    
+    <div class="px-5 mt-0 mb-2 mx-5 text-dark" style="font-size: 15px">
+    <table class="table table-striped table-bordered" >
+      <thead class="thead-dark text-light" style="background: #051c2c">
+        <tr>
+          <th>Stadium</th>
+          <th>Waktu</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for i in pemesanan %}
+        <tr>
+          <td>{{i.nama}}</td>
+          <td>{{i.waktu}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    
+    <div style="text-align: center;">
+        <a href="/manager/ketersediaanstadium/" class="btn text-light p-1" role="button" 
+            style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
+            Pesan </a>
+    </div>
+    
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>

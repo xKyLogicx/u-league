@@ -1,10 +1,7 @@
 {% include 'panitia_templates.html' %}
 {% load static %}
 
-<!doctype html>
-<html lang="en">
-
-<head>
+{% block content %}
     <style>
       p {
           text-align: center;
@@ -37,6 +34,7 @@
 
       
   </style>
+  
 </head>
 
 <body>
@@ -46,7 +44,7 @@
         <form method="POST" id="buatPertandinganForm">
             {% csrf_token %}
             <table>
-                <tr">
+                <tr>
                     <div class="form-floating mb-3">
                         <label for="addWasitUtama"> Pilih Wasit Utama </label>
                         <select class="form-select form-control" name="pemain" id="addWasitUtama"
@@ -151,4 +149,4 @@
         crossorigin="anonymous"></script>
 </body>
 
-</html>
+{% endblock %}

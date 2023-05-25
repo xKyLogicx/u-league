@@ -18,14 +18,11 @@
           li{
               color: white;
             }
-            a{
+            a:hover{
               color: white;
               text-decoration:none;
-            }
-
-            li:hover {
-                text-decoration: none;
-                color:  #1f40cb;
+              background-color: #1f40cb;
+              font-weight: bold;
             }
 
             li:active {
@@ -61,8 +58,17 @@
     </head>
     <body>
         <nav class="navbar" style="background-color:black">
+          {% if data_manajer %}
+          {% for manajer in data_manajer %}
+            <p class="font-weight-bold" style="color: white; padding-left: 10px;">
+              {{ manajer.nama_depan|upper }} {{ manajer.nama_belakang|upper }} - MANAGER
+            </p>
+          {% endfor %}
+        {% else %}
+          <p class="font-weight-bold" style="color: white; padding-left: 10px;">Failed to fetch</p>
+        {% endif %}
+        
 
-            <a class="font-weight-bold" style="color: white; padding-left: 10px;">TEST - MANAGER</a>
 
               <ul class="menu menu-horizontal p-0" style="size: 10px; float: right;">
                 <li><a href="{% url 'manager:manager_home' %}">Dashboard</a></li>
@@ -87,6 +93,7 @@
                   </a>
               </li>
               </ul>
+            </p>
             <a href="{% url 'authentication:logout' %}" class="btn btn-sm font-weight-bold" style="background-color:#1f40cb; color: white;" >Logout</a>
             
           </nav>
