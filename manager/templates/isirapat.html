@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+{% include 'manager_templates.html' %}
+<head>
+  {% block content %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <style>
+  </style>
+</head>
+<body>
+  <div class="p-5 text-light" style="background-image: linear-gradient(to bottom right, #051c2c, #000000)">
+    <h2 class="fw">History Rapat</h2>
+  </div>
+  <style>
+    .container {
+      text-align: center;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
+<div class="container">
+  <h2>List Rapat</h2>
+  <div class="px-5 mt-0 mb-2 mx-5 text-dark" style="font-size: 15px">
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark text-light" style="background: #051c2c">
+        <tr>
+          <th>Rapat Tim</th>
+          <th>Nama Panitia</th>
+          <th>Stadium</th>
+          <th>Tanggal dan Waktu</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for listrapat in history_rapat %}
+        <tr>
+          <td>{{ listrapat.nama_tim_a }} vs {{ listrapat.nama_tim_b }}</td>
+          <td>{{ listrapat.perwakilan_panitia }}</td>
+          <td>{{ listrapat.stadium_name }}</td>
+          <td>{{ listrapat.datetime }}</td>
+          <td>
+            <a href="#" data-toggle="modal" data-target="#laporanModal{{ listrapat.id }}">Lihat Laporan</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% for listrapat in history_rapat %}
+<div class="modal fade" id="laporanModal{{ listrapat.id }}" tabindex="-1" role="dialog" aria-labelledby="laporanModalLabel{{ listrapat.id }}" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="laporanModalLabel{{ listrapat.id }}">Isi Rapat</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ listrapat.isi_rapat }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- Jika Anda ingin menambahkan tombol aksi lain, Anda dapat menambahkannya di sini -->
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</body>
+{% endblock %}
+</html>
