@@ -19,6 +19,9 @@
       padding: 20px;
       border-radius: 10px;
     }
+    .modal-backdrop {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
   </style>
 <div class="container">
   <h2>List Rapat</h2>
@@ -37,11 +40,11 @@
         {% for listrapat in history_rapat %}
         <tr>
           <td>{{ listrapat.nama_tim_a }} vs {{ listrapat.nama_tim_b }}</td>
-          <td>{{ listrapat.perwakilan_panitia }}</td>
+          <td>{{ listrapat.full_name }}</td>
           <td>{{ listrapat.stadium_name }}</td>
           <td>{{ listrapat.datetime }}</td>
           <td>
-            <a href="#" data-toggle="modal" data-target="#laporanModal{{ listrapat.id }}">Lihat Laporan</a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#laporanModal{{ listrapat.id }}">Lihat Laporan</button>
           </td>
         </tr>
         {% endfor %}
@@ -65,12 +68,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <!-- Jika Anda ingin menambahkan tombol aksi lain, Anda dapat menambahkannya di sini -->
       </div>
     </div>
   </div>
 </div>
 {% endfor %}
-</body>
 {% endblock %}
+</body>
 </html>

@@ -81,6 +81,13 @@ def listpertandinganbeli(request):
         'selected_date':selected_date
     }
 
+    if request.method == 'POST':
+        selected_pertandingan = request.POST.get('pertandingan')
+        request.session['selected_pertandingan'] = selected_pertandingan
+        print(selected_pertandingan)
+
+        return HttpResponseRedirect(reverse('penonton:show_beli'))
+
     return render(request, "listpertandinganbeli.html", context=context)
 
 def show_listwaktu(request):

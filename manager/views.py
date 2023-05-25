@@ -5,6 +5,7 @@ import locale
 import uuid
 from utils.query import *
 from django.views.decorators.csrf import csrf_exempt
+from django.db import connection
 
 locale.setlocale(locale.LC_ALL, '')
 from django.views.decorators.csrf import csrf_exempt
@@ -13,39 +14,32 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-<<<<<<< HEAD
 def show_historyrapat(request):
     query_historyrapat = query(f"""
     SELECT
-    r.*,
-    s.Nama AS Stadium_Name,
-    tp1.Nama_Tim AS Nama_Tim_A,
-    tp2.Nama_Tim AS Nama_Tim_B
+        r.*,
+        s.Nama AS Stadium_Name,
+        tp1.Nama_Tim AS Nama_Tim_A,
+        tp2.Nama_Tim AS Nama_Tim_B,
+        (NP.nama_depan || ' ' || NP.nama_belakang) AS Full_Name
     FROM Rapat AS r
     LEFT JOIN Pertandingan AS p ON r.ID_Pertandingan = p.ID_Pertandingan
     LEFT JOIN Stadium AS s ON p.Stadium = s.ID_Stadium
     LEFT JOIN Tim_Pertandingan AS tp1 ON p.ID_Pertandingan = tp1.ID_Pertandingan
     LEFT JOIN Tim_Pertandingan AS tp2 ON p.ID_Pertandingan = tp2.ID_Pertandingan
-    AND tp1.Nama_Tim < tp2.Nama_Tim
+        AND tp1.Nama_Tim < tp2.Nama_Tim
     LEFT JOIN Tim AS t1 ON tp1.Nama_Tim = t1.Nama_Tim
     LEFT JOIN Tim AS t2 ON tp2.Nama_Tim = t2.Nama_Tim
+    JOIN NON_PEMAIN NP ON R.perwakilan_panitia = NP.id
     ORDER BY p.Start_Datetime ASC;
-""")
-                               
-    # history rapat lumayan rumit queriesnya
-    # harusnya ambil nama panitia bukan ID
-    print(query_historyrapat)
-
+    """)
+                  
     context={
         'history_rapat':query_historyrapat
     }
-    
-    return render(request, "historyrapat.html", context=context)
-    
 
-=======
-@csrf_exempt
->>>>>>> 4149ff142004cd018e53f5a5860593ea209f6a7b
+    return render(request, "historyrapat.html", context=context)
+
 def manager_home(request):
     context = {}
     username = request.session['username']

@@ -22,15 +22,16 @@
         </tr>
       </thead>
       <tbody>
+        <form method="post">
+        {% csrf_token %}
         {% for pertandingan in listpertandinganbeli %}
         <tr>
           <td>{{ pertandingan.nama_tim_a }}</td>
           <td>{{ pertandingan.nama_tim_b }}</td>
-          <td><a class="btn text-light p-1" role="button"
-            style="font-size: 14px; border-radius: 14px; width:8rem; background: #1f40cb">
-            Pilih</a></td>
+          <td><input type="submit" id="pertandingan" name="pertandingan">
         </tr>
         {% endfor %}
+      </form>
       </tbody>
     </table>
     </div>
