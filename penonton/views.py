@@ -8,7 +8,7 @@ from django.urls import reverse
 import uuid
 
 def insert_new_receipt(request):
-    random_uuid = uuid.uuidl()
+    random_uuid = str(uuid.uuid4())
     return (request, random_uuid)
 # Create your views here.
 def penonton_home(request):
@@ -44,7 +44,7 @@ def show_beli(request):
         request.session['selected_jenistiket'] = selected_jenistiket
         request.session['selected_pembayaran'] = selected_pembayaran
 
-        randomuuid=insert_new_receipt()
+        randomuuid=insert_new_receipt(request)
     
     query_pembelian = query(f"""
     INSERT INTO PEMBELIAN_TIKET '{randomuuid}',users,'{selected_jenistiket}', '{selected_pembayaran}','id_pertandingan'
