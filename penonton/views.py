@@ -5,6 +5,11 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+import uuid
+
+def insert_new_receipt(request):
+    random_uuid = uuid.uuidl()
+    return (request, random_uuid)
 # Create your views here.
 def penonton_home(request):
     return render(request, 'penonton_home.html')
@@ -31,8 +36,18 @@ def show_listpertandingan_penonton(request):
     return render(request, "listpertandingan_penonton.html", context=context)
 
 def show_beli(request):
-    query_pembelian = query(f"""
+    if request.method == 'GET':
+        selected_jenistiket = request.GET.get('jenistiket')
+        selected_pembayaran = request.GET.get('pembayaran')
+        
+        # Store the selected values in session
+        request.session['selected_jenistiket'] = selected_jenistiket
+        request.session['selected_pembayaran'] = selected_pembayaran
+
+        randomuuid=insert_new_receipt()
     
+    query_pembelian = query(f"""
+    INSERT INTO PEMBELIAN_TIKET '{randomuuid}',users,'{selected_jenistiket}', '{selected_pembayaran}','id_pertandingan'
     """)
 
     print(query_pembelian)
@@ -41,12 +56,11 @@ def show_beli(request):
         'pembelian':query_pembelian
     }
 
+    #harusnya ada error untuka ctivate triggernya
+    #trigger sudah ada didatabase
+    #usersnya juga belum ketrack
+    #id_pertandingan juga
 
-    #variable query untuk setiap pembelian
-    #POST & GET untuk setiap tombol beli
-    #Siapin if ketika yang querynya tidak sesuai diharapin keluarin
-    #notif kalau itu salah.
-    #jika berhasil maka arahin ke dashboard
 
     return render(request, "belitiket.html", context=context)
 
